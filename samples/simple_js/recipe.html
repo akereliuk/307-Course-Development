@@ -1,0 +1,39 @@
+<!DOCTYLE html>
+<html lang="en">
+<head>
+<script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+<script language="JavaScript">
+$(document).ready(function() {
+  /* add ingredients handler */
+  $('a#add_ingredient').click(function(e) {
+     e.preventDefault()
+	 var clonedInput = $('.inputSpan:last').clone(true, true); 
+	 $('#ingredients').append(clonedInput);
+	 $('input[name="recipeIngredient[]"]:last').val('');
+	 $('input[name="recipeIngredient[]"]:last').focus();
+  })
+  /* add listener code for blur event for each input with name containing recipe */
+  $('input[name*="recipe"]').on('blur', function() {
+    if ($(this).val() == '') {
+	  $(this).next('span').html('&nbsp;Do not leave blank').css({'color':'#FF0000'});
+	} else {
+	  $(this).next('span').html('&nbsp;');
+	}
+  });
+ });  
+</script>
+<body>
+<form name="recipe" action="recipe.php" method="POST">
+ <input name="recipeName" placeholder="Recipe Name"/><span></span>
+<div id="ingredients">
+ <p>Ingredients</p>
+ <span class="inputSpan"><input name="recipeIngredient[]" placeholder="Ingredient" /><span></span><br /></span>
+ <span class="inputSpan"><input name="recipeIngredient[]" placeholder="Ingredient" /><span></span><br /></span>
+ <span class="inputSpan"><input name="recipeIngredient[]" placeholder="Ingredient" /><span></span><br /></span>
+</div>
+<p><a id="add_ingredient" href="newIngredient">add another ingredient</a></p>
+<p>Instructions</p>
+<textarea name="recipeInstructions"></textarea><span></span>
+<input type="submit" value="Submit Recipe" />
+</form></body></html>
+

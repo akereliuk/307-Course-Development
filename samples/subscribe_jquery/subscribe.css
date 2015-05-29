@@ -1,0 +1,32 @@
+ html, body {
+    margin: 0px;
+    padding: 0px;
+    font: 14px/21px "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
+ 
+ #registration {
+    position: absolute;
+    left: 10px;
+    top: -40px;
+    background-color: #0066CC;
+    padding: 10px 10px 15px 10px;
+    -webkit-border-radius: 0px 0px 15px 15px;
+    -moz-border-radius: 0px 0px 15px 15px;
+    border-radius: 0px 0px 15px 15px;   
+ }
+ 
+ #registration a {
+    position: relative;
+    top: 12px;
+    left: 5px;
+    color: #FFFFFF;
+    text-decoration: none;
+ }
+ #registration a:hover {
+    color: #CCCCCC;
+ }    
+ 
+#main {
+  padding-top: 30px;
+ }
+ 

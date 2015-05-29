@@ -1,0 +1,15 @@
+AuthType Basic
+AuthName "Use your UWinID credentials"
+LDAPReferrals off
+AuthLDAPBindAuthoritative off
+AuthBasicProvider ldap
+AuthUserFile /dev/null
+AuthLDAPURL "ldap://ldap.cs.uwindsor.ca/ou=People,dc=cs,dc=uwindsor,dc=ca?uid"
+require valid-user "steve"
+AcceptPathInfo On
+
+    <Limit GET HEAD POST PUT DELETE OPTIONS>
+        Order Allow,Deny
+        Allow from all
+    </Limit>
+

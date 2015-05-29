@@ -1,0 +1,57 @@
+body {
+  font-family: Arial, Helvetica, sans-serif
+}
+
+p.announce {
+ text-align: center; 
+ font-size: 1.5em; 
+ font-weight: bold; 
+ margin-top: 1em;
+}	
+
+p.instructions {
+ text-align: 
+ center; margin: 1em;
+ color: darkblue;
+}
+
+		
+       label {
+         font-weight: bold;
+         float: left;
+         width: 27%;
+         margin-right: .5em;
+         text-align: right;
+         }
+       legend {
+         font-weight: bold; 
+         font-size: 1.2em; 
+         margin-bottom: .5em;
+         }
+       #wrapper {
+         margin: 0;
+         padding: 0;
+         }
+       #login {
+         position: absolute;
+         left: 0;
+         width: 40%;
+         padding: 1em 0;
+         }
+       #reg {
+         position: absolute;
+         left: 40%;
+         width: 60%;
+         padding: 1em 0;
+         }
+       #field {padding-bottom: .5em;}
+.errors {
+         font-weight: bold; 
+         font-style: italic; 
+         font-size: 90%; 
+         color: red;
+         margin-top: 0;
+		 text-align: center;
+}
+
+		 

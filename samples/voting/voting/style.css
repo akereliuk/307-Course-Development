@@ -1,0 +1,23 @@
+body {
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.q_class {
+  border: 1px solid black;
+  width: 500px;
+}
+.q_question {
+  background-color: #eee;
+  text-align: center;
+  padding: 5px;
+}
+.q_responses {
+  clear: both;
+  text-align: center;
+}
+.q_responses_radio {
+  float: left;
+  width: 40px;
+}
+.q_responses_text {
+  float: left;
+}  

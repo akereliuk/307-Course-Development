@@ -1,0 +1,37 @@
+body {
+  font-family: Tahoma, Verdana, sans-serif;
+}
+.q_class {
+  border: 1px solid black;
+  width: 500px;
+}
+.q_question {
+  background-color: #eee;
+  text-align: center;
+  padding: 5px;
+}
+.q_responses {
+  clear: both;
+  text-align: center;
+}
+.q_responses_radio {
+  float: left;
+  width: 40px;
+}
+.q_responses_text {
+  float: left;
+  text-align: left;
+}  
+.graph_outer {
+  background-color: #ddd;
+  border: 1px solid green;
+  padding: 0px;
+  width: 450px;
+  height: 20px;
+  margin-bottom: 3px;
+}
+.graph_inner {
+  background-color: green;
+  padding: 0px;
+  margin: 0px;
+}
