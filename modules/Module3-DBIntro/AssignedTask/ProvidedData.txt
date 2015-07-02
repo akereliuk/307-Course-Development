@@ -1,0 +1,107 @@
+Summer Camp Enrollee List
+---------------------------------
+Vera Lopez
+Born April 28, 1936
+701-738-7164
+522 Hidden Meadow Drive
+Enrolled June 29, 2015
+
+Josie Kitt
+Born March 19, 1960
+843-373-7326
+837 Kessla Way
+Enrolled June 15, 2015
+
+Colleen Sanchez
+Born January 4, 1956
+339-645-1592
+4196 Hillside Drive
+Enrolled June 12, 2015
+
+Luigi Cook
+Born March 10, 1975
+310-588-2171
+2204 Sumner Street
+Enrolled May 28, 2015
+
+Carolyn Carson
+Born January 17, 1969
+786-429-6417
+2431 Rinehart Road
+Enrolled June 8, 2015
+
+
+Conference Room Booking Table
+---------------------------------
+Name: Corporate Quarterly Review
+Description: Discuss Company Finances and review quarter
+Department: Finance
+Start: November 20, 2014 at 10:00am
+End: November 20, 2014 at 1:00pm
+Booked By: John Smith
+
+Name: HR Weekly Review
+Description: N/A
+Department: Human Resources
+Start: August 13, 2015 at 9:15am
+End: August 13, 2015 at 9:45am
+Booked By: Janet Wilson
+
+Name: Infrastructure New Project
+Description: Brainstorm the new upcoming project
+Department: Infrastructure Support
+Start: October 3, 2015 at 3:00pm
+End: October 3, 2015 at 5:00pm
+Booked By: Marshall Hansen
+
+Name: Office Cleanup Group Meeting
+Description: Get the cleanup group together and discuss plans
+Department: N/A
+Start: March 17, 2013 at 11:00am
+End: March 17, 2013 at 11:30am
+Booked By: Bobby Clean
+
+Name: Interviews for New Developer Position
+Description: Booking conference room for Developer interviews
+Department: Information Systems
+Start: April 28, 2015 at 1:00pm
+End: April 28, 2015 at 5:00pm
+Booked By: Rachel Tanith
+
+
+Online Menu
+---------------------------------
+Name: Caesar Salad
+Description: Boneless chicken, Romaine lettuce, Parmesan cheese, croutons tossed with Caesar dressing
+Type: Salad
+Price: $6.99
+Spicyness: N/A
+Kosher: Yes
+
+Name: French Fries
+Description: Deep fried french fries lightly salted and served with special sauce
+Type: Appetizer
+Price: $2.99
+Spicyness: N/A
+Kosher: Yes
+
+Name: Beef Tenderloin
+Description: Savory beef tenderloin with mustard-herb crust
+Type: Meat
+Price: $11.99
+Spicyness: N/A
+Kosher: No
+
+Name: Spicy Boneless Wings
+Description: 6 boneless wings with your choice of hot sauce
+Type: Meat
+Price: $8.99
+Spicyness: Hot
+Kosher: No
+
+Name: Tiramisu
+Description: Classic Italian dessert cooked with rum, drizzled with chocolate powder
+Type: Dessert
+Price: $5.99
+Spicyness: N/A
+Kosher: No
