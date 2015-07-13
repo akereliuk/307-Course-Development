@@ -1,0 +1,128 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+h2 {
+  text-align: right;
+  background-color: lightblue;
+  color: black;
+  border-radius: 10px;
+  padding: 5px;
+  padding-right: 10px;
+}
+
+h3 {
+  font-weight: regular;
+  width: 80%;
+  text-align: center;
+  margin: 0px auto;
+  margin-bottom: 10px;
+  font-size: 100%;
+  line-height: 150%;
+}
+
+h3 a {
+ text-decoration: none;
+ color: darkblue;
+}
+
+div.category {
+  width: 250px;
+  border: 1px solid grey;
+  padding: 10px;
+  margin: 10px;
+  float: left;
+  text-align: center;
+  font-size: 20pt;
+  background-color: #eee;
+  border-radius: 10px;
+ }
+ 
+ div.container {
+   margin: 0px auto;
+   overflow: hidden;
+   width: 880px;
+   font-weight: bold;
+ }
+
+div.category a {
+ display: block;
+ margin-top: 10px;
+ text-decoration: none;
+ color: darkgreen;
+ background-color: lightgreen;
+ border: 10px solid lightgreen;
+ border-radius: 10px;
+ font-size: 11pt;
+ font-weight: regular;
+}
+
+div.category a:hover {
+  background-color: darkgreen;
+  color: white;
+  border: 10px solid darkgreen;
+  border-radius: 10px;
+}
+
+a.add {
+  background-color: lightgreen;
+  border-radius: 10px;
+  padding: 5px;
+  text-decoration: none;
+  color: darkgreen;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+a.add:hover , a.remove:hover {
+  background-color: orange;
+}
+
+a.remove {
+  background-color: red;
+  border-radius: 10px;
+  padding: 5px;
+  text-decoration: none;
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+
+table.filmlist tr:hover { 
+  background-color: yellow !important;
+}
+
+table.filmlist {
+  margin: 0px auto;
+}
+
+table.filmlist th {
+  background-color: black;
+  color: white;
+  padding: 5px;
+}
+
+table.filmlist td {
+  padding: 5px;
+}
+
+table.filmlist tr:nth-child(even) {
+ background-color: #eee;
+}
+
+table.filmlist td.right {
+  text-align: right;
+}
+
+table.filmlist td.cnt {
+  text-align: center;
+}
+
+.desc{
+	display:none;
+}
+
