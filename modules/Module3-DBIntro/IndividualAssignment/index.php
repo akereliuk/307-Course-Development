@@ -4,7 +4,7 @@ include_once("db.php");
 
 $objDB = connectDB();
 
-$query = $objDB->prepare("SELECT table_name FROM information_schema.tables WHERE table_schema = '307online'");
+$query = $objDB->prepare("SELECT table_name FROM information_schema.tables WHERE table_schema = 'kereliua_307'");
 $query->execute();
 
 $arrRow = $query->fetchAll(PDO::FETCH_ASSOC);

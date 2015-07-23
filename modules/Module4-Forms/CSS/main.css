@@ -1,0 +1,17 @@
+.question{
+	font-weight:bold;
+	font-size:18px;
+}
+
+.answer{
+	padding-top:10px;
+	padding-bottom:30px;
+}
+
+input[type="radio"]{
+	margin-left:50px;
+}
+
+input[type="checkbox"]{
+	margin-left:20px;
+}
