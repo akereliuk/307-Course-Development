@@ -9,9 +9,13 @@
 }
 
 input[type="radio"]{
-	margin-left:50px;
+	margin-left:20px;
 }
 
 input[type="checkbox"]{
 	margin-left:20px;
+}
+
+.error{
+	background:#FFBABA;
 }
