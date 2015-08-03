@@ -1,0 +1,97 @@
+body, textarea, input {
+  font-family: Tahoma, Arial, sans-serif;
+  font-size: 11pt;
+}
+
+.guestbook, .thanks {
+  border: 1px solid green;
+  padding: 10px;
+  width: 90%;
+  margin: 0px auto;
+}
+table.guestbook {
+  margin-top: 10px;
+}
+
+table.guestbook th {
+  background-color: green;
+  color: white;
+  padding: 3px;
+}
+
+table.guestbook tr:nth-child(odd)  td {
+  background-color: #ccc;
+  padding: 3px;
+}
+
+table.guestbook tr:nth-child(even)  td {
+  background-color: #eee;
+  padding: 3px;
+}
+
+table.guestbook tr td:last-child ,table.guestbook tr th:last-child{
+ width: 150px;
+ max-width: 150px;
+}
+
+div.comment {
+  border: 1px solid darkblue;
+  width: 25em;
+  padding: 5px;
+  float: left;
+  display: inline;
+  margin: 5px;
+  height: 100px;
+  overflow: auto;
+}
+
+
+.visitor {
+  color: white;
+  padding: 5px;
+  background-color: green;  
+}
+
+.visit-date {
+  text-align: right;
+  font-style: italic;
+  padding-right: 5px;
+}
+
+#form-table td {
+  padding: 5px;
+}
+
+#form-table tr td:first-child {
+  width: 15em;
+  background-color: #eeeeee;
+  padding: 5px;
+}
+
+input[type="text"], textarea {
+  width: 25em;
+}
+
+input:focus, textarea:focus {
+  background-color: lightyellow;
+}
+
+input[type=submit] {
+  width: 10em;
+}
+
+input[type=submit]:hover {
+  background-color: lightyellow;
+}
+
+p {
+  text-align: center;
+}
+
+p.error {
+  background-color: red;
+  color: black;
+  padding: 20px;
+  font-weight: bold;
+}
+.noshow { display:none; }
