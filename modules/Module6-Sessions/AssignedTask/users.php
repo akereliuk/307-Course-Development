@@ -10,10 +10,6 @@ function user_exists($strUsername) {
 	return ($arrRow['intCount'] > 0) ? 1 : 0;
 }
 
-function logged_in() {
-	return (isset($_SESSION['intUserID'])) ? true : false;
-}
-
 function login($strUsername, $strPassword) {
 	$objDB = new Database();
 	$strPassword = md5($strPassword);
@@ -43,13 +39,6 @@ function register_user($arrRegisterData) {
 		$strComma = ",";
 	}
 	
-	$objDB->query($strSQL);
-}
-
-function changePassword($strNewPassword){
-	$objDB = new Database();
-	$strNewPassword = md5($strNewPassword);
-	$strSQL = "UPDATE users SET strPassword = " . $objDB->quote($strNewPassword) . " WHERE intUserID = " . $objDB->quote($_SESSION['objUser']->getNumericalUserID());
 	$objDB->query($strSQL);
 }
 

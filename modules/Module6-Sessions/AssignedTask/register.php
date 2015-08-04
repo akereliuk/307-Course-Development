@@ -77,3 +77,5 @@
 			}
 			echo "</div>";
 		?>
+	</body>
+</html>
