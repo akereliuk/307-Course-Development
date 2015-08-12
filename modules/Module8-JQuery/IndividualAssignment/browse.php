@@ -27,7 +27,7 @@
 	$( document ).ready(function() {
 		table = $('#filmlist').DataTable({
 			"iDisplayLength": 20,
-			"ajax": 'data.json',
+			"ajax": 'ajax.php?categoryID=<?=$_GET['category_id']?>',
 			"columns": [
 			{ "data": "title" },
 			{ "data": "release_year" },
@@ -38,23 +38,8 @@
 	});
 	
 	function filter_category(categoryID, categoryName){
-		$.ajax({
-				url: 'ajax.php',
-				async: true,
-				type: 'post',
-				contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
-				data: {
-					categoryID: categoryID
-				},
-				success: function(data){
-					$('#movielistheader').text('Showing ' + categoryName);
-					$('#movielistbody').html(data);
-					table.ajax.url('data.json').load();
-				},
-				error: function(textStatus, errorThrown){
-					alert(textStatus);
-				}
-		});
+		$('#movielistheader').text('Showing ' + categoryName);
+		table.ajax.url('ajax.php?categoryID=' + categoryID).load();
 	}
 </script>
 <!-- DataTables CSS -->
@@ -78,31 +63,6 @@
 		</tr>
 	</thead>
 	<tbody id='movielistbody'>
-		<?php
-			global $db;
-			$query = $db->prepare("select * from film_category JOIN film USING (film_id) JOIN category USING (category_id) WHERE category_id = :category_id ORDER BY release_year DESC, title");
-			$query->bindParam(":category_id", $_GET['category_id']);
-			$query->execute();
-			$films = $query->fetchAll(PDO::FETCH_ASSOC);
-			foreach ($films as $film) {
-				echo "<tr>";
-				echo "<td class='title'>{$film['title']}</td>";
-				echo "<td class='cnt'>{$film['release_year']}</td>";
-				echo "<td class='right'>{$film['length']}</td>";	
-				echo "<td class='right'>$ {$film['rental_rate']}</td>";
-				echo "<td class='cnt'>";
-				if (isset($_SESSION['cart'][$film['film_id']])) {
-					echo "<a class='remove' href='basket_remove.php?film_id={$film['film_id']}'>Remove from Basket</a>";
-					
-				} else {
-					$title = urlencode($film['title']);
-					echo "<a class='add' href='basket_add.php?film_id={$film['film_id']}&title=$title'>Add to Basket</a>";
-					
-				}
-				echo "</td>";
-				echo "</tr>";
-			}
-		?>
 	</tbody>
 </table>
 </body>
