@@ -31,6 +31,11 @@
 			echo "</td>";
 			echo "</tr>";
 		}
+		$arrFilms = array();
+		$arrFilms['data'] = $films;
+		$fp = fopen('data.json', 'w');
+		fwrite($fp, json_encode($arrFilms));
+		fclose($fp);
 	}
 	
 ?>

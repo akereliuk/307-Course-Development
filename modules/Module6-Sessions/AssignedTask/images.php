@@ -12,7 +12,8 @@
 			$strComma = ",";
 		}
 		
-		$objDB->query($strSQL);
+		$success = $objDB->query($strSQL);
+		return $success;
 	}
 	
 	function retrieveImages(){

@@ -23,9 +23,17 @@
 <link rel="stylesheet" href="lib/style.css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script>
+	var table;
 	$( document ).ready(function() {
-		$('#filmlist').DataTable({
-			"iDisplayLength": 20
+		table = $('#filmlist').DataTable({
+			"iDisplayLength": 20,
+			"ajax": 'data.json',
+			"columns": [
+			{ "data": "title" },
+			{ "data": "release_year" },
+			{ "data": "length" },
+			{ "data": "rental_rate" }
+			]
 		});
 	});
 	
@@ -41,6 +49,7 @@
 				success: function(data){
 					$('#movielistheader').text('Showing ' + categoryName);
 					$('#movielistbody').html(data);
+					table.ajax.url('data.json').load();
 				},
 				error: function(textStatus, errorThrown){
 					alert(textStatus);

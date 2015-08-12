@@ -28,13 +28,12 @@ if (isset($_POST['send'])) {
       
    if (strlen($nickname) == 0 && strlen($visitor_name) > 2 && strlen($visitor_city) > 5 && strlen($comments) > 10) {
        // Save the data
-	   $query =  $db->stmt_init();
        if (isset($visit_date)) {
-         $query->prepare("INSERT INTO `guestbook` (`visitor_name`,`visitor_city`,`comments`,`visit_date`,`comment_date`, `token`) VALUES (?,?,?,?, NOW(), ?)");
-		 $query->bind_param("sssss",$visitor_name,$visitor_city,$comments,$visit_date,$token);
+         $query = $db->prepare("INSERT INTO `guestbook` (`visitor_name`,`visitor_city`,`comments`,`visit_date`,`comment_date`, `token`) VALUES (?,?,?,?, NOW(), ?)");
+		 $query->bindParam("sssss",$visitor_name,$visitor_city,$comments,$visit_date,$token);
        } else {
          $query->prepare("INSERT INTO `guestbook` (`visitor_name`,`visitor_city`,`comments`,`comment_date`, `token`) VALUES (?,?,?,NOW(),?')");
- 		 $query->bind_param("sssss",$visitor_name,$visitor_city,$comments,$token);
+ 		 $query->bindParam("sssss",$visitor_name,$visitor_city,$comments,$token);
        }
 
        $result = $query->execute();
@@ -77,7 +76,7 @@ $result = $db->query("SELECT * FROM guestbook ORDER BY comment_date DESC");
 
 if ($result) {
     echo "<div class='guestbook'>";
-    while ($comment = $result->fetch_assoc()) {
+    while ($comment = $result->fetch(PDO::FETCH_ASSOC)) {
        echo "<div class='comment'>";
        echo "<div class='visitor'>{$comment['visitor_name']}, {$comment['visitor_city']}</div>";
        echo "<span class='comment'>{$comment['comments']}</span>";
@@ -88,9 +87,6 @@ if ($result) {
     echo "<br clear='all' /></div>";
 
 }
-
-$result->free();
-$db->close();
 
 ?>
 </body></html>

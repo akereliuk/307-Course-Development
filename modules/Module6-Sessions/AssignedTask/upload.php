@@ -42,11 +42,19 @@
 					echo "Sorry, your file was not uploaded.";
 				// if everything is ok, try to upload file
 				} else {
-					if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $fileToUpload)) {
-						echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.<br/><img src='uploads/" . $_FILES["fileToUpload"]["name"] . "'/><br/>";
-						uploadImage(array('intUserID' => $_SESSION['intUserID'], 'strImageName' => basename( $_FILES["fileToUpload"]["name"]), 'dtmCreatedOn' => date('Y-m-d H:i:s'), 'strCreatedBy' => 'system'));
-					} else {
-						echo "Sorry, there was an error uploading your file.<br/>";
+					if(uploadImage(array('intUserID' => $_SESSION['intUserID'], 'strImageName' => basename( $_FILES["fileToUpload"]["name"]), 'dtmCreatedOn' => date('Y-m-d H:i:s'), 'strCreatedBy' => 'system'))){
+						$uploadOK = 1;
+					}
+					else{
+						echo "Error inserting image to database.";
+						$uploadOK = 0;
+					}
+					if($uploadOK == 1){
+						if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $fileToUpload)) {
+							echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.<br/><img src='uploads/" . $_FILES["fileToUpload"]["name"] . "'/><br/>";
+						} else {
+							echo "Sorry, there was an error uploading your file.<br/>";
+						}
 					}
 				}
 				

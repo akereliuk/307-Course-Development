@@ -33,7 +33,7 @@ if (isset($_POST['send'])) {
        }
 
        $result = $db->query($query);
-       if ($db->errno) 
+       if (!$result) 
           echo "<p class='error'>".$db->error."</p>";
        else {
           $show_form = FALSE;
@@ -70,7 +70,7 @@ $result = $db->query("SELECT * FROM guestbook ORDER BY comment_date DESC");
 
 if ($result) {
     echo "<div class='guestbook'>";
-    while ($comment = $result->fetch_assoc()) {
+    while ($comment = $result->fetch(PDO::FETCH_ASSOC)) {
        echo "<div class='comment'>";
        echo "<div class='visitor'>{$comment['visitor_name']}, {$comment['visitor_city']}</div>";
        echo "<span class='comment'>{$comment['comments']}</span>";
@@ -81,9 +81,6 @@ if ($result) {
     echo "<br clear='all' /></div>";
 
 }
-
-$result->free();
-$db->close();
 
 ?>
 </body></html>

@@ -6,6 +6,7 @@
 		public function __construct(){
 			try{
 				$this->_objDB = new PDO('mysql:host=localhost;dbname=gallery', 'root', '');
+				$this->_objDB->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 			}
 			catch(PDOException $e){
 				print "Error: " . $e->getMessage() . "<br/>";
@@ -33,6 +34,10 @@
 		
 		public function commit(){
 			$this->_objDB->commit();
+		}
+		
+		public function prepare($strSQL){
+			return $this->_objDB->prepare($strSQL);
 		}
 	}
 ?>

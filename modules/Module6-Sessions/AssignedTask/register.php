@@ -41,10 +41,15 @@
 							'strUserID' => $_POST['strUserID'],
 							'strPassword' => $_POST['strPassword'],
 							'dtmCreatedOn' => date('Y-m-d H:i:s'),
-							'strCreatedBy' => 'system'
+							'strCreatedBy' => $_POST['strUserID']
 						);
-						register_user($arrRegisterData);
-						echo "Registered successfully.";
+						$success = register_user($arrRegisterData);
+						if($success){
+							echo "Registered successfully.";
+						}
+						else{
+							echo "Error registering user.";
+						}
 					}
 					else{
 						foreach($arrErrors as $key => $value){

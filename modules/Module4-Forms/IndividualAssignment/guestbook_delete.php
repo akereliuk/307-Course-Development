@@ -10,11 +10,10 @@
 require_once("guestbook/db.config");
 
 if ($_REQUEST['id'] > 0) {
-	$query = $db->stmt_init();
-	$query->prepare("DELETE FROM guestbook WHERE id = ?");
-	$query->bind_param("i",$_REQUEST['id']);
+	$query = $db->prepare("DELETE FROM guestbook WHERE id = ?");
+	$query->bindParam("i",$_REQUEST['id']);
 	$result=$query->execute();
-	if ($result && $db->affected_rows > 0) {
+	if ($result && $db->rowCount() > 0) {
 		echo "<p class='thanks'>Entry has been deleted.</p>";
     } else {
 		echo "<p class='error'>Delete failed.</p>";
@@ -24,7 +23,6 @@ if ($_REQUEST['id'] > 0) {
 }
 echo "<p><a href='guestbook_admin.php'>Return to List</a></p>";
 
-$db->close();
 ?>
 </body></html>
 

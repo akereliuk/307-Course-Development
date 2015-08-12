@@ -19,7 +19,7 @@ if ($result) {
 	echo "<form action='./guestbook_delete_multi.php' method='post'>";
     echo "<table class='guestbook'>";
 	echo "<tr><th>Name</th><th>City</th><th>Comments</th><th>Visit Date</th><th><input type='submit' value='Delete' /></th></tr>";
-    while ($comment = $result->fetch_assoc()) {
+    while ($comment = $result->fetch(PDO::FETCH_ASSOC)) {
        echo "<tr>";
        echo "<td>{$comment['visitor_name']}</td><td>{$comment['visitor_city']}</td>";
        echo "<td>{$comment['comments']}</td>";
@@ -32,9 +32,6 @@ if ($result) {
     echo "</table></form>";
 
 }
-
-$result->free();
-$db->close();
 
 ?>
 </body></html>

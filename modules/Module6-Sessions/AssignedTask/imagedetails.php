@@ -15,10 +15,10 @@
 			<h3><?=$_GET['image']?> - Created By <?=$arrImageDetails['strUserID']?> on <?=$arrImageDetails['dtmCreatedOn']?></h3>
 			<form action='#' method='post'>
 				<select name='resize'>
-					<option>100</option>
-					<option>200</option>
-					<option>400</option>
-					<option>600</option>
+					<option <?=((isset($_POST['resize']) && $_POST['resize'] == '100') ? 'selected' : '')?>>100</option>
+					<option <?=((isset($_POST['resize']) && $_POST['resize'] == '200') ? 'selected' : '')?>>200</option>
+					<option <?=((isset($_POST['resize']) && $_POST['resize'] == '400') ? 'selected' : '')?>>400</option>
+					<option <?=((isset($_POST['resize']) && $_POST['resize'] == '600') ? 'selected' : '')?>>600</option>
 				</select>
 				<input type='submit' value='Resize'/>
 			</form>
