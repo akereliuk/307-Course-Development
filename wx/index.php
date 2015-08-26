@@ -21,11 +21,9 @@ mysqli_report(MYSQLI_REPORT_STRICT);
 
 $db = @new MySQLi(DB_HOST,DB_USER,DB_PASSWORD,DB_NAME);
 
+$airports = array();
+
 if ($db->connect_error) {
-    $results = array();
-    $results['status'] = "ERROR";
-    $results['info'] = "Database error:".$db->connect_error;
-	echo json_encode($results);
 	exit(0);
 }
 
@@ -40,29 +38,23 @@ if ($db->connect_error) {
     $stmt->bind_param('s',$_REQUEST['city']);
     $stmt->execute();
     $result = $stmt->get_result();
-    $j = $result->fetch_array(MYSQLI_NUM);
-    $k = $j[0];
-    if (strlen($k) == 0) {
-      $results['status'] = "ERROR";
-      $results['info'] = "City name was not found";
-      echo json_encode($results);
-      exit(0);
+    while ($j = $result->fetch_array(MYSQLI_ASSOC)) {
+		$airports[] = $j['iaco'];
     }
-  } else {
-     // use the code, or default
-     $k = @$_REQUEST['code'];
   }
-  if ($k == NULL) 
-    $k = 'CYQG';
-
-  $fileName = "http://weather.noaa.gov/pub/data/observations/" .
-          "metar/stations/$k.TXT";
-
+  if (isset($_REQUEST['code'])) {
+	  $airports[] = $_REQUEST['code'];
+  }
+ 
+  $index = 0;
   $results = array();
-  if ( ($fileData = @file($fileName)) == FALSE )  {
-    $results['status'] = "ERROR";
-  } else {
-    $results['status'] = "OK";
+  foreach ($airports as $airport) {
+    $fileName = "http://weather.noaa.gov/pub/data/observations/" .
+          "metar/stations/$airport.TXT";
+
+    if ( ($fileData = @file($fileName)) == TRUE )  {
+      $results[$index]['status'] = "OK";
+	  
     $m = @new METAR($fileData[1]);
     $timestamp = strtotime($fileData[0]);
     $conditions = implode(",",$m->getWeather());
@@ -72,15 +64,15 @@ if ($db->connect_error) {
     }
     $relativeHumidity = round(100 * pow((112 - (0.1 * $m->getTemperature()) + $m->getDewPoint()) /
                                                 (112 + (0.9 * $m->getTemperature())), 8));
-    $results['code'] = $k;
-    $results['obstime_GMT'] = date("Y-m-d H:i",$timestamp);
-    $results['conditions'] = trim($conditions);
-    $results['clouds'] = trim($clouds);
-    $results['visibility'] = trim($m->getVisibility());
-    $results['temp'] = $m->getTemperature();
-    $results['wdir'] = $dirs[round($m->getWindDirection()/45)];
-    $results['wpseed'] = trim($m->getWindSpeed());
-    $results['humidity'] = $relativeHumidity;
+    $results[$index]['code'] = $airport;
+    $results[$index]['obstime_GMT'] = date("Y-m-d H:i",$timestamp);
+    $results[$index]['conditions'] = trim($conditions);
+    $results[$index]['clouds'] = trim($clouds);
+    $results[$index]['visibility'] = trim($m->getVisibility());
+    $results[$index]['temp'] = $m->getTemperature();
+    $results[$index]['wdir'] = $dirs[round($m->getWindDirection()/45)];
+    $results[$index]['wpseed'] = trim($m->getWindSpeed());
+    $results[$index]['humidity'] = $relativeHumidity;
     
     // return airport information, if available
          $query = 'SELECT * FROM airport_info where iaco = ?';
@@ -89,22 +81,24 @@ if ($db->connect_error) {
 	   echo $db->error;
 	   exit(0);
      }
-    $stmt->bind_param('s',$k);
+    $stmt->bind_param('s',$airport);
     $stmt->execute();
     $result = $stmt->get_result();
     $j = $result->fetch_array(MYSQLI_ASSOC);
     //print_r($j);
-    $results['name'] = $j['name'];
-    $results['city'] = $j['city'];
-    $results['country'] = $j['country'];
-    $results['code3'] = $j['iata_faa'];
-    $results['latitude'] = $j['latitude'];
-    $results['longitude'] = $j['longitude'];
-    $results['altitide'] = $j['altitude'];
-    $results['timezone'] = $j['zone'];
-    $results['dst'] = $j['dst'];
- 
+    $results[$index]['name'] = $j['name'];
+    $results[$index]['city'] = $j['city'];
+    $results[$index]['country'] = $j['country'];
+    $results[$index]['code3'] = $j['iata_faa'];
+    $results[$index]['latitude'] = $j['latitude'];
+    $results[$index]['longitude'] = $j['longitude'];
+    $results[$index]['altitide'] = $j['altitude'];
+    $results[$index]['timezone'] = $j['zone'];
+    $results[$index]['dst'] = $j['dst'];
+    $index++;
   }
-  echo json_encode($results);
+  }
+  $json['datapoints'] = $results;
+  echo json_encode($json);
   exit(0);    
 ?>
