@@ -1,47 +1,86 @@
-<?php
+<?php include_once "images.php"; ?>
 
- // Shopping Cart Examples -- Using Session Variables for Storage
- // 60-307
- 
- // Start the session with 3 hour timeout
- 
- ini_set('session.gc_maxlifetime', 3*60*60);
- 
- session_set_cookie_params(3*60*60);
- 
- session_start();
- 
- include ("lib/db.config");
- include ("lib/functions.php");
- 
- if (!isset($_SESSION['cart']))
-	 $_SESSION['cart'] = array();
- 
- 
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head><title>Shopping Cart Example</title>
-<link rel="stylesheet" href="lib/style.css" />
-</head>
-<body>
-<h1>Categories</h1>
-<?php display_cart(); ?>
-<div class="container">
-<?php
-
-// get a list of categories with movie counts in each group
-
-$result = $db->query("SELECT name,count(title) AS count, category_id from film join film_category USING (film_id) join category using (category_id) GROUP BY name");
-
-if ($result) {
-   $arrRow = $result->fetchAll(PDO::FETCH_ASSOC);
-	foreach($arrRow as $category){
-		echo "<div class='category'>{$category['name']}<a href='browse.php?category_id={$category['category_id']}'>Browse {$category['count']} titles</a></div>";
-	}   
-	
-}
-
-?>
-</div>
-</body>
+	<head>
+		<title>File Uploading</title>
+		<?php include_once "stylesheet.php"; ?>
+		<script type='text/javascript'>
+			function likeImage(intImageID, intUserID){
+				$.ajax({
+						url: 'images.php',
+						async: true,
+						type: 'post',
+						contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
+						data: {
+							action: 'likeImage',
+							intImageID: intImageID,
+							intUserID: intUserID
+						},
+						success(data) {
+							$('#likesBar' + intImageID).html(data);
+						},
+						error: function(textStatus, errorThrown){
+							alert(textStatus);
+						}
+				});
+			}
+			
+			function unlikeImage(intImageID, intUserID){
+				$.ajax({
+						url: 'images.php',
+						async: true,
+						type: 'post',
+						contentType: "application/x-www-form-urlencoded;charset=ISO-8859-15",
+						data: {
+							action: 'unlikeImage',
+							intImageID: intImageID,
+							intUserID: intUserID
+						},
+						success(data) {
+							$('#likesBar' + intImageID).html(data);
+						},
+						error: function(textStatus, errorThrown){
+							alert(textStatus);
+						}
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<?php include_once "navigation.php"; ?>
+		<div class='content'>
+			<h3>Image Gallery</h3>
+			<hr/>
+			<?php
+				if(isset($_SESSION['userID'])){
+			?>
+				<form action="upload.php" method="post" enctype="multipart/form-data">
+					Select image to upload:
+					<input type="file" name="fileToUpload" id="fileToUpload"/>
+					<input type="submit" value="Upload Image" name="submit"/>
+				</form>
+			<?php } else{ ?>
+				You must log in to upload an image.
+			<?php } ?>
+			<hr/>
+			<div class='gallery'>
+			<?php
+				$arrImages = retrieveImages();
+				$intCounter = 0;
+				echo "<table><tr>";
+				foreach($arrImages as $key => $filename){
+					$path_parts = pathinfo($filename);
+					echo "<td><a href='imagedetails.php?image=" . $path_parts['filename'] . "&ext=" . $path_parts['extension'] . "'><img class='gallerythumbnail' src='uploads/" . $filename . "'/></a>";
+					echo "<div id='likesBar" . $key . "'>" . ((isset($_SESSION['intUserID'])) ? getLikesBar($key, $_SESSION['intUserID']) : getGuestLikesBar($key)) . "</div>";
+					$intCounter++;
+				}
+				if(!$intCounter){
+					echo "<td><b>No images to display.</b></td>";
+				}
+				echo "</tr></table>";
+			?>
+			</div>
+		</div>
+	</body>
 </html>
