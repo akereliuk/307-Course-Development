@@ -1,0 +1,30 @@
+.disabled{
+	pointer-events: none;
+	cursor: default;
+	color: grey;
+}
+
+.active{
+
+}
+
+.selectorbar{
+	text-align:center;
+	border-top:1px solid black;
+	border-right:1px solid black;
+	border-left:1px solid black;
+}
+
+#sceneselector{
+	border-bottom:1px solid black;
+}
+
+#bookcontents{
+	padding-bottom: 20px;
+}
+
+#titlebar{
+	font-weight:bold;
+	font-size:24px;
+	text-align:center;
+}

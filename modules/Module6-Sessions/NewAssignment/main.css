@@ -1,0 +1,47 @@
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 11pt;
+}
+
+.gallerythumbnail{
+	padding: 5px;
+}
+
+div.options {
+  padding: 5px;
+}
+
+.gallery{
+	width:90%;
+	margin: 0px auto;
+}
+
+div.options {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid lightgray;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+form {
+   display: inline-block;
+   margin: 0px auto;
+   background-color: #f0f0f0;
+   padding: 10px;
+}
+
+form a.button {
+   background-color: #f0f0f0;
+   text-decoration: none;
+}
+
+.red {
+  color: darkred !important;
+}
+
+form input[type=submit] {
+   color: green;
+   font-weight: bold;
+}

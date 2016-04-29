@@ -1,0 +1,49 @@
+body {
+   padding: 10px;
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 11pt;
+}
+
+.gallerythumbnail{
+	width:100px;
+	height:100px;
+	padding: 5px;
+}
+
+.gallery{
+	width:90%;
+	margin: 0px auto;
+}
+
+form.upload {
+   width: 80%;
+   margin: 0px auto;
+   background-color: #f0f0f0;
+   padding: 10px;
+}
+
+form.upload input[type=submit] {
+   color: green;
+   font-weight: bold;
+}
+
+p {
+  text-align: center;
+  padding: 10px;
+}
+
+p.error {
+  color: red;
+  font-weight: bold;
+  background-color: lightyellow;
+  border: 1px solid black;
+}
+
+p.success {
+  color: green;
+}
+
+p.bottom {
+  background-color: #f0f0f0;
+}
+

@@ -1,0 +1,89 @@
+body {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: 11pt;
+}
+
+h1 {
+ font-size: 110%;
+ color: green;
+ text-align: center;
+}
+div#container {
+ text-align: center;
+}
+
+div#form_div {
+  width: fit-content;
+  border: 1px solid green;
+  margin: 0 auto;
+  display: inline-block;
+  text-align: left;
+}
+
+p , li {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+label.select, label.text {
+  width: 20em;
+  display: inline-block;
+}
+label.textarea {
+  display: block;
+}
+
+div {
+ padding: 2px;
+ margin: 2px;
+}
+
+.error {
+  border: 2px solid red;
+  background: lightyellow;
+}
+
+.question{
+	font-weight:bold;
+	font-size:18px;
+}
+
+.answer{
+	padding-top:10px;
+	padding-bottom:30px;
+}
+
+input[type="radio"]{
+	margin-left:20px;
+}
+
+input[type="checkbox"]{
+	margin-left:20px;
+}
+
+input[type="text"], select {
+	width:20em;
+}
+
+textarea {
+	width:90%;
+}
+
+table.results {
+  margin: 0px auto;
+}
+table.results th {
+  background: #050505;
+  color: white;
+}
+table.results tr:nth-child(even) {
+  background: #f0f0f0;
+}
+table.results tr td:last-child {
+ text-align: right;
+}
+table.results td, table.results th {
+  padding-left: 10px;
+  padding-right: 10px;
+ }

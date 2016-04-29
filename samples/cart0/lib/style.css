@@ -122,3 +122,7 @@ table.filmlist td.cnt {
   text-align: center;
 }
 
+.desc{
+	display:none;
+}
+

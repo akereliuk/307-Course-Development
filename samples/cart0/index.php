@@ -34,11 +34,10 @@
 $result = $db->query("SELECT name,count(title) AS count, category_id from film join film_category USING (film_id) join category using (category_id) GROUP BY name");
 
 if ($result) {
-   while ($category = $result->fetch_assoc()) {
- 
-    echo "<div class='category'>{$category['name']}<a href='browse.php?category_id={$category['category_id']}'>Browse {$category['count']} titles</a></div>";
-
-   }   
+   $arrRow = $result->fetchAll(PDO::FETCH_ASSOC);
+	foreach($arrRow as $category){
+		echo "<div class='category'>{$category['name']}<a href='browse.php?category_id={$category['category_id']}'>Browse {$category['count']} titles</a></div>";
+	}   
 	
 }
 

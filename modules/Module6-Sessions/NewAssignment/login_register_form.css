@@ -1,0 +1,70 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11pt;
+}
+
+p.announce {
+ text-align: center; 
+ font-size: 1.5em; 
+ font-weight: bold; 
+ margin-top: 1em;
+}	
+
+p.instructions {
+ text-align: 
+ center; margin: 1em;
+ color: darkblue;
+}
+	
+label {
+   width: 10em;
+   margin-right: .5em;
+   text-align: right;
+   color: #777;
+   display: inline-block;
+}
+
+input[type=submit] {
+    margin-left: 45%; 
+    margin-bottom: .5em;
+}
+input[type=text], input[type=password] {
+   width: 20em;
+}
+         
+legend {
+   font-weight: bold; 
+   font-size: 10pt; 
+   margin-bottom: .5em;
+}
+
+#wrapper {
+    padding: 0;
+	margin: 0px auto;
+	max-width: 64em;
+}
+		 
+#login {
+    min-width: 22em;
+	float: left;
+}
+#reg {
+   min-width: 22em;
+   float: left;
+}
+         
+.field {
+    padding-bottom: .5em;
+    text-align: center;  
+}
+
+.errors {
+    font-weight: bold; 
+    font-style: italic; 
+    font-size: 90%; 
+    color: red;
+    margin-top: 0;
+	text-align: center;
+}
+
+		 

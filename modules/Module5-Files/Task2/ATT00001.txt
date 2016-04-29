@@ -1,0 +1,3 @@
+
+
+They work with the uploads folder in the current directory.  upload.php is what the students are to write.

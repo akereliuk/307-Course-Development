@@ -1,5 +1,15 @@
 <?php
-	$fileToUpload = "uploads/" . basename($_FILES["fileToUpload"]["name"]);
+    // This is the upload file handler.
+	
+	// First, check to see if the user is logged in. If not, direct them to the login/registration page
+	session_start();
+	if (!isset($_SESSION['auth'])) {
+		header("Location: login_register.php");
+		exit;
+	}
+
+    $dir = "uploads";
+	$fileToUpload = $dir."/".basename($_FILES["fileToUpload"]["name"]);
 	$imageFileType = pathinfo($fileToUpload,PATHINFO_EXTENSION);
 	$uploadOK = 0;
 	if(isset($_POST['submit'])){
@@ -21,7 +31,7 @@
 		}
 		
 		// Check file size
-		if ($_FILES["fileToUpload"]["size"] > 500000) {
+		if ($_FILES["fileToUpload"]["size"] > 1000000) {
 			echo "Sorry, your file is too large.<br/>";
 			$uploadOK = 0;
 		} 
@@ -39,5 +49,5 @@
 		}
 	}
 	
-	echo "<br/><a href='index.php'>Return to Gallery</a>";
+	echo "<a href='index.php'>Return to Gallery</a>";
 ?>

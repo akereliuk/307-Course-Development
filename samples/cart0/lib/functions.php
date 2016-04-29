@@ -24,10 +24,11 @@ function show_categories ($hide) {
 
     if ($result) {
 	  echo " &bull; ";
-      while ($category = $result->fetch_assoc()) {
+      $arrRow = $result->fetchAll(PDO::FETCH_ASSOC);
+	  foreach($arrRow as $category){
 		  if ($category['category_id'] != $hide) 
 		      echo "<a href='browse.php?category_id={$category['category_id']}'>{$category['name']}</a> &bull; ";
-	 }
+	  }
 	}
 }
 

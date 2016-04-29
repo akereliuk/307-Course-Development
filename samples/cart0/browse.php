@@ -20,16 +20,23 @@
  
  // Get all of the films for the given category ID
  
- $query = $db->stmt_init();
- $query->prepare("select * from film_category JOIN film USING (film_id) JOIN category USING (category_id) WHERE category_id = ? ORDER BY release_year DESC, title");
- $query->bind_param("i", $_REQUEST['category_id']);
+ $query = $db->prepare("select * from film_category JOIN film USING (film_id) JOIN category USING (category_id) WHERE category_id = :category_id ORDER BY release_year DESC, title");
+ $query->bindParam(":category_id", $_REQUEST['category_id']);
  $query->execute();
- $result = $query->get_result();
- $films = $result->fetch_all(MYSQLI_ASSOC);
+ $films = $query->fetchAll(PDO::FETCH_ASSOC);
 ?><!DOCTYPE html>
 <html>
 <head><title>Shopping Cart Example</title>
 <link rel="stylesheet" href="lib/style.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		$('.title').click( function() {
+				$(this).closest('tr').next().toggle();
+			} 
+		);
+	});
+</script>
 </head>
 <body>
 <h1>Browsing <?php echo $films[0]['name']; ?></h1>
@@ -43,7 +50,7 @@
 <?php
 foreach ($films as $film) {
 	echo "<tr>";
-	echo "<td>{$film['title']}</td>";
+	echo "<td class='title'>{$film['title']}</td>";
 	echo "<td class='cnt'>{$film['release_year']}</td>";
 	echo "<td class='right'>{$film['length']}</td>";	
 	echo "<td class='right'>$ {$film['rental_rate']}</td>";
@@ -57,6 +64,10 @@ foreach ($films as $film) {
 		
 	}
 	echo "</td>";
+	echo "</tr>";
+	echo "<tr class='desc'>";
+	echo "<td>{$film['description']}</td>";
+	echo "<td></td><td></td><td></td><td></td>";
 	echo "</tr>";
 }
 
